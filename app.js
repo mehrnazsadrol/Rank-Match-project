@@ -12,11 +12,12 @@ async function matchMaking() {
     var result = wb.getWorksheet("Results");
     let low_col = matrix.actualColumnCount + 1;
     let postings_num = 67;
+    var cluster_rank;
 
     for (let row = 5; row < matrix.actualRowCount; row++) {
 
         var lowest_sum = 0;
-
+        var posting_id = 0;
         for (let count = 1; count < postings_num; count++) {
 
             var col = count * 2 + 1;
@@ -40,9 +41,14 @@ async function matchMaking() {
 
 
                     var vacancies = matrix.getRow(4).getCell(col).value
-                    if (vacancies > 1)
+                    if (vacancies > 0)
                         matrix.getRow(4).getCell(col).value = vacancies - 1;
-
+                    
+                    if ( vacancies === 0 )
+                    {
+                        matrix.spliceColumns(col,1);
+                        matrix.spliceColumns(col,1);
+                    }
                     //  await wb.xlsx.writeFile("W2020.xlsx");
                     // console.log("lowest sum is " + lowest_sum);
 
@@ -53,19 +59,24 @@ async function matchMaking() {
                     //  console.log("inside second if.... and lowest sum is = " + lowest_sum);
                     //   console.log("inside else if" + matrix.getRow(row).getCell('A').value);
                     var rank = cell_adj_value;
+
                     if (isNaN(cell_adj_value)) {
                         rank = parseInt(cell_adj_value.match(/\d/g));
-                    }
-                    if (!rank) {
-                        console.log(matrix.getRow(row).getCell('A').value);
+                        cluster_rank = cell_adj_value.replace(/[0-9]/g, '');
+                        //if (cluster_rank) console.log(cluster_rank);
                     }
                     if (lowest_sum > 0) {
-                        if (rank + cell_value < lowest_sum)
+                        if (rank + cell_value < lowest_sum) {
+                            posting_id = matrix.getRow(1).getCell(col).value;
                             lowest_sum = rank + cell_value;
+                        }
                     } else {
+
+                        posting_id = matrix.getRow(1).getCell(col).value;
                         lowest_sum = rank + cell_value;
                         //console.log("    rank is " + rank + "    cell value is " + cell_value + "   lowest sum is " + lowest_sum);
                     }
+
 
                 }
             }
@@ -74,11 +85,14 @@ async function matchMaking() {
         // console.log("done with the iterations... lowest sum is "+lowest_sum); 
 
         if (lowest_sum > 0) {
+
             matrix.getRow(row).getCell(low_col).value = lowest_sum;
+            matrix.getRow(row).getCell(low_col +1).value = posting_id;
         }
 
 
     }
+
     await wb.xlsx.writeFile("W2020.xlsx");
 }
 
