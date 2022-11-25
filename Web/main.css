@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
+@import url(fontawesome-all.min.css);
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
 * {
     box-sizing: border-box;
@@ -14,20 +15,122 @@
 
 body{
     height: 100vh;
-    margin: 0;
+    /* margin: 0;
     padding: 0;
     background-repeat: no-repeat;
+    background-image: 
+    linear-gradient( #181061 20%,  white 60%, #ffc105 20%); */
+   
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: class="support css-value">content-box;
+        box-sizing: content-box;
+        width: 100%;
+        height: 100%;
+        border: none;
+        font: normal 16px/1 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        background: -webkit-radial-gradient(closest-side, rgba(255,255,255,1) 0, rgba(0,150,255,0) 100%), -webkit-linear-gradient(90deg, rgba(109,109,255,0.61) 0, #edca80 100%);
+        background: -moz-radial-gradient(closest-side, rgba(255,255,255,1) 0, rgba(0,150,255,0) 100%), -moz-linear-gradient(0deg, rgba(109,109,255,0.61) 0, #edca80 100%);
+        background: radial-gradient(closest-side, rgba(255,255,255,1) 0, rgba(0,150,255,0) 100%), linear-gradient(0deg, rgba(109,109,255,0.61) 0, #edca80 100%);
+        background-position: center 50%, 50% 50%;
+        -webkit-background-origin: padding-box;
+        background-origin: padding-box;
+        -webkit-background-clip: border-box;
+        background-clip: border-box;
+        -webkit-background-size: 200% 200%, cover;
+        background-size: 200% 200%, cover;
+     
+ 
 
-     background-image: linear-gradient(130deg, #181061,#ffc105 ) 
 }
 
 
 .container{
     height: 100vh;
-    opacity: 0.5;
-    background-color: #ffffff; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+ 
+
 }
 
 .screen{
-    
+      background-color: #ffffff; 
+    position: relative;	
+    height: 500px;
+	width: 360px;	
+	box-shadow: 0px 0px 24px #5C5696;
+	
+}
+
+
+.login {
+	 width: 320px; 
+	padding: 30px; 
+	 padding-top: 120px; 
+}
+.login__field {
+	padding: 20px 0px;	
+	position: relative;	
+}
+
+.login__icon {
+	position: absolute;
+	top: 30px;
+	
+}
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+	transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #6A679E;
+}
+
+
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
+
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	border-color: #6A679E;
+	outline: none;
+}
+
+.button__icon {
+	font-size: 24px;
+	margin-left: auto;
+	color: #7875B5;
 }
